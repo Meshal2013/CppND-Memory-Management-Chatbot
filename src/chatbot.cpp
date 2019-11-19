@@ -48,7 +48,7 @@ ChatBot::ChatBot(const ChatBot &source) // 2 : copy constructor
     {
  		
             *_image = *source._image;
-        *_chatLogic = *source._chatLogic;
+        _chatLogic = source._chatLogic;
   		*_rootNode = *source._rootNode;
         std::cout << "COPYING content of instance " << &source << " to instance " << this << std::endl;
 }
@@ -65,7 +65,7 @@ ChatBot::ChatBot(const ChatBot &source) // 2 : copy constructor
     }
   
             *_image = *source._image;
-        *_chatLogic = *source._chatLogic;
+        _chatLogic = source._chatLogic;
   		*_rootNode = *source._rootNode;
         return *this;
     }
