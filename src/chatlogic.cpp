@@ -17,11 +17,11 @@ ChatLogic::ChatLogic()
     //// STUDENT CODE
     ////
 
-    // create instance of chatbot
-    _chatBot = new ChatBot("../images/chatbot.png");
+//     // create instance of chatbot
+//     _chatBot = new ChatBot("../images/chatbot.png");
 
-    // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
+//     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
+//     _chatBot->SetChatLogicHandle(this);
   
 
 
@@ -35,7 +35,7 @@ ChatLogic::~ChatLogic()
     ////
 
     // delete chatbot instance
-    delete _chatBot;
+   // delete _chatBot;
 
     //delete all nodes
 //     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
@@ -176,11 +176,12 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             (*childNode)->AddEdgeToParentNode(edge.get());
                             (*parentNode)->AddEdgeToChildNode(std::move(edge));
                         }
-*
+
                         ////
                         //// EOF STUDENT CODE
                     }
                 }
+            
                 else
                 {
                     std::cout << "Error: ID missing. Line is ignored!" << std::endl;
@@ -218,10 +219,13 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
             }
         }
     }
-
+// create instance of chatbot
+  ChatBot  new_chatBot("../images/chatbot.png");
+    // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
+    new_chatBot.SetChatLogicHandle(this);
     // add chatbot to graph root node
-    _chatBot->SetRootNode(rootNode);
-    rootNode->MoveChatbotHere(_chatBot);
+    new_chatBot.SetRootNode(rootNode);
+    rootNode->MoveChatbotHere(std::move(new_chatBot));
     
     ////
     //// EOF STUDENT CODE
